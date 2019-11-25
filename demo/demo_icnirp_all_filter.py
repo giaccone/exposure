@@ -22,7 +22,7 @@ for year in y:
                 skip = False
 
             if not skip:
-                print("year {}, receptor {}, quantity {}, skip {}".format(year, receptor, quantity, skip))
+                print("year {}, receptor {}, quantity {}".format(year, receptor, quantity))
 
                 # frequency
                 domain = 'freq'
@@ -38,6 +38,7 @@ for year in y:
                 # plot
                 plt.figure()
                 plt.subplot(2,1,1)
+                plt.title("{} - {} (ICNIRP {})".format(receptor, quantity, year), fontsize=12)
                 plt.loglog(f, H_f)
                 plt.loglog(f, H_t)
                 plt.ylabel('magnitude', fontsize=14)
