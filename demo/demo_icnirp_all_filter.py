@@ -47,5 +47,5 @@ for year in y:
                 plt.semilogx(f, theta_t)
                 plt.ylabel('phase (deg)', fontsize=14)
                 plt.xlabel('frequency (Hz)', fontsize=14)
-                plt.legend(('frequency domain', 'time_domain'))
+                plt.legend(('frequency domain', 'time domain'))
                 plt.tight_layout()
