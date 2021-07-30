@@ -6,9 +6,9 @@ import matplotlib.pyplot as plt
 plt.ion()
 
 # all possible parameters
-year = '1998'
+year = '2010'
 receptor = 'occupational'
-quantity = 'J'
+quantity = 'B'
 
 # frequency
 domain = 'freq'
