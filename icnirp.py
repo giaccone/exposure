@@ -492,7 +492,7 @@ def icnirp_filter(year, receptor, quantity, domain, f=None, rc_series=None):
                     # angular frequency
                     a = 2 * np.pi * 8
                     b = 2 * np.pi * 25
-                    c = 2 * np.pi * 300
+                    c = 2 * np.pi * 400
                     d = 2 * np.pi * 3000
 
                     # filter parameters
