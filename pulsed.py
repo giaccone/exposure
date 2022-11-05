@@ -104,7 +104,7 @@ def wpm_time(num, den, t, A, makeplot='y'):
         for k in range(A.shape[1]):
             nsp += 1
             ax = hfg[0].add_subplot(nsp)
-            ax.plot(t, A[:, k], 'k',linewidth=3)
+            ax.plot(t, A[:, k], 'C0',linewidth=2)
             plt.ylabel('comp #{}'.format(k), fontsize=14)
             plt.xticks(fontsize=14)
             plt.yticks(fontsize=14)
@@ -119,7 +119,7 @@ def wpm_time(num, den, t, A, makeplot='y'):
         for k in range(A.shape[1]):
             nsp += 1
             ax = hfg[1].add_subplot(nsp)
-            ax.plot(t, WP[:, k], 'b', linewidth=3, label='comp ' + str(k))
+            ax.plot(t, WP[:, k], 'C2', linewidth=2, label='comp ' + str(k))
             plt.ylabel('Wcomp #{}'.format(k), fontsize=14)
             plt.xticks(fontsize=14)
             plt.yticks(fontsize=14)
@@ -131,13 +131,13 @@ def wpm_time(num, den, t, A, makeplot='y'):
 
 
         hfg[2] = plt.figure(facecolor='w')
-        plt.plot(t, WPmod, 'r',linewidth=3, label='module')
+        plt.plot(t, WPmod, 'C3',linewidth=2, label='module')
         plt.plot(t, EI * np.ones(t.shape), 'k--', linewidth=1)
         plt.title('IW = {:.2f}'.format(EI),fontsize=14)
         plt.xlabel('time (s)', fontsize=14)
         plt.ylabel('WPmod', fontsize=14)
         plt.xticks(fontsize=14)
-        plt.yticks(np.linspace(0,EI,5),fontsize=14)
+        plt.yticks(np.linspace(0, EI, 5),fontsize=14)
         plt.legend()
         plt.grid()
         plt.tight_layout()

@@ -120,7 +120,7 @@ def eu_filter(quantity,kind,domain,f=None):
                 s = 2j * np.pi * fref
                 Href = s / (s + a)
                 lim_ref = eu_limit(fref, quantity, kind) * np.sqrt(2)
-                k = np.asscalar(1.0 / (lim_ref * np.abs(Href)))
+                k = (1.0 / (lim_ref * np.abs(Href))).item()
 
                 num = np.array([k, 0])
                 den = np.array([1, a])
@@ -147,7 +147,7 @@ def eu_filter(quantity,kind,domain,f=None):
                 s = 2j * np.pi * fref
                 Href = s / (s + a)
                 lim_ref = eu_limit(fref, quantity, kind) * np.sqrt(2)
-                k = np.asscalar(1.0 / (lim_ref * np.abs(Href)))
+                k = (1.0 / (lim_ref * np.abs(Href))).item()
 
                 num = np.array([k, 0])
                 den = np.array([1, a])
@@ -186,7 +186,7 @@ def eu_filter(quantity,kind,domain,f=None):
                 s = 2j * np.pi * fref
                 Href = (s * (s + c)) / ((s + a) * (s + b) * (s + d))
                 lim_ref = eu_limit(fref, quantity, kind)
-                k = np.asscalar(1.0 / (lim_ref * np.abs(Href)))
+                k = (1.0 / (lim_ref * np.abs(Href))).item()
 
                 num = [k, k * c, 0]
                 den = [1, (a + b + d), (a * b + a * d + b * d), a * b * d]
@@ -215,7 +215,7 @@ def eu_filter(quantity,kind,domain,f=None):
                 s = 2j * np.pi * fref
                 Href = 1 / (s + a)
                 lim_ref = eu_limit(fref, quantity, kind)
-                k = np.asscalar(1.0 / (lim_ref * np.abs(Href)))
+                k = (1.0 / (lim_ref * np.abs(Href))).item()
 
                 num = [k]
                 den = [1, a]
