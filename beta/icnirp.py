@@ -602,7 +602,7 @@ def icnirp_filter(year, receptor, quantity, domain, f=None, rc_series=None):
                     phase = phase + origin_zero(order=2, frequency=f)
                     phase = phase + real_pole(fp=8, order=1, frequency=f)
                     phase = phase + real_pole(fp=25, order=1, frequency=f)
-                    phase = phase + real_zero(fz=300, order=1, frequency=f)
+                    phase = phase + real_zero(fz=400, order=1, frequency=f)
                     phase = phase + real_pole(fp=3000, order=1, frequency=f)
 
                     # magnitude
@@ -618,7 +618,7 @@ def icnirp_filter(year, receptor, quantity, domain, f=None, rc_series=None):
                     # angular frequency
                     a = 2 * np.pi * 8
                     b = 2 * np.pi * 25
-                    c = 2 * np.pi * 300
+                    c = 2 * np.pi * 400
                     d = 2 * np.pi * 3000
 
                     # filter parameters

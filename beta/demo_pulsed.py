@@ -7,12 +7,12 @@ import matplotlib.pyplot as plt
 plt.ion()
 
 # Define filter
-year = '1998'
+year = '2010'
 receptor = 'occupational'
 quantity = 'B'
 
 # Define time domain waveform
-wave = 'sine_pulse'
+wave = 'trapz'
 if wave == 'sine_pulse':
     N = 9999
     fr = 1000
@@ -28,8 +28,8 @@ if wave == 'sine_pulse':
 
 elif wave == 'trapz':
     N = 9999
-    Tr = 10e-3
-    Tf = 15e-3
+    Tr = 2.5e-3
+    Tf = 10e-3
     Tw = 100e-3
     T = 300e-3
     t = np.linspace(0, T, N)
@@ -39,7 +39,6 @@ elif wave == 'trapz':
     B[(t >= Tr) & (t < Tr + Tw)] = Glim * np.sqrt(2)
     Tstart = t[t < Tr + Tw][-1]
     B[(t >= Tr + Tw) & (t < Tr + Tw + Tf), 0] = Glim * np.sqrt(2) - Glim * np.sqrt(2) / Tf * (t[(t >= Tr + Tw) & (t < Tr + Tw + Tf)] - Tstart)
-
 
 
 
@@ -62,14 +61,14 @@ IWfb, WPfb = wpm_freq(WFb, phib, f, BFT, makeplot='n')
 num, den = icnirp_filter(year, receptor, quantity, 'time')
 IW, WP = wpm_time(num, den, t, B, makeplot='n')
 
-print("Frequency summation rule: {:.2f}".format(IS))
-print("Weighted peak method (freq): {:.2f}".format(IWf))
-print("Weighted peak method (freq, new): {:.2f}".format(IWfb))
-print("Weighted peak method (time): {:.2f}".format(IW))
+print("Frequency summation rule: {:.4f}".format(IS))
+print("Weighted peak method (freq): {:.4f}".format(IWf))
+print("Weighted peak method (freq, new): {:.4f}".format(IWfb))
+print("Weighted peak method (time): {:.4f}".format(IW))
 
 # final plot
 hsig = plt.figure(facecolor='w')
-plt.plot(t, B, 'b', linewidth=2, label='signal')
+plt.plot(t, B*1e6, 'C0', linewidth=2, label='B-field ($\mu T$)')
 plt.xlabel('time (s)', fontsize=14)
 plt.ylabel('signal', fontsize=14)
 plt.xticks(fontsize=14)
@@ -80,13 +79,15 @@ plt.tight_layout()
 
 
 hWP = plt.figure(facecolor='w')
-plt.plot(t, np.sqrt(np.sum(WP ** 2, axis=1)), 'b', linewidth=2, label='time')
-plt.plot(t, IW * np.ones(t.shape), 'b--', linewidth=1)
-plt.plot(t, np.sqrt(np.sum(WPf ** 2, axis=1)), 'r', linewidth=2, label='frequency')
-plt.plot(t, IWf * np.ones(t.shape), 'r--', linewidth=1)
+plt.plot(t, np.sqrt(np.sum(WPf ** 2, axis=1)), 'C0', linewidth=2, label='frequency domain')
+plt.plot(t, IWf * np.ones(t.shape), 'C0--', linewidth=1)
+
+plt.plot(t, np.sqrt(np.sum(WP ** 2, axis=1)), 'C1', linewidth=2, label='time domain')
+plt.plot(t, IW * np.ones(t.shape), 'C1--', linewidth=1)
+
 # freq new
-plt.plot(t, np.sqrt(np.sum(WPfb ** 2, axis=1)), 'g', linewidth=2, label='frequency')
-plt.plot(t, IWfb * np.ones(t.shape), 'g--', linewidth=1)
+plt.plot(t, np.sqrt(np.sum(WPfb ** 2, axis=1)), 'k--', linewidth=2, label='frequency domain (proposed)')
+plt.plot(t, IWfb * np.ones(t.shape), 'k--', linewidth=1)
 #
 plt.xlabel('time (s)',fontsize=14)
 plt.ylabel('weighted signal', fontsize=14)
@@ -94,5 +95,5 @@ plt.xticks(fontsize=14)
 plt.yticks(fontsize=14)
 plt.legend()
 plt.grid()
-plt.title('$EI_t$ = {:.2f}    -    $EI_f$ = {:.2f}'.format(IW, IWf))
+#plt.title('$EI_t$ = {:.2f}    -    $EI_f$ = {:.2f}'.format(IW, IWf))
 plt.tight_layout()

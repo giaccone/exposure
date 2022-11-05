@@ -38,7 +38,7 @@ for year in y:
                 H_t = 10 ** (Hdb / 20)
 
                 # plot
-                plt.figure()
+                h = plt.figure()
                 plt.subplot(2,1,1)
                 plt.title("{} - {} (ICNIRP {})".format(receptor, quantity, year), fontsize=12)
                 plt.loglog(f, H_f)
@@ -51,5 +51,5 @@ for year in y:
                 plt.semilogx(f, theta_fb, 'k--')
                 plt.ylabel('phase (deg)', fontsize=14)
                 plt.xlabel('frequency (Hz)', fontsize=14)
-                plt.legend(('frequency domain', 'time domain', 'frequency domain (new)'))
+                plt.legend(('frequency domain', 'time domain', 'frequency domain (proposed)'))
                 plt.tight_layout()
