@@ -25,7 +25,7 @@ H_t = 10 ** (Hdb / 20)
 # plot
 plt.figure()
 plt.subplot(2,1,1)
-plt.title("{} - {})".format(quantity, kind), fontsize=12)
+plt.title("{} - ({})".format(quantity, kind), fontsize=12)
 plt.loglog(f, H_f)
 plt.loglog(f, H_t)
 plt.ylabel('magnitude', fontsize=14)

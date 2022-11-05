@@ -44,7 +44,7 @@ print("Weighted peak method (time): {:.2f}".format(IW))
 
 # final plot
 hsig = plt.figure(facecolor='w')
-plt.plot(t, B, 'b', linewidth=2, label='signal')
+plt.plot(t, B, 'C0', linewidth=2, label='signal')
 plt.xlabel('time (s)', fontsize=14)
 plt.ylabel('signal', fontsize=14)
 plt.xticks(fontsize=14)
@@ -55,10 +55,10 @@ plt.tight_layout()
 
 
 hWP = plt.figure(facecolor='w')
-plt.plot(t, np.sqrt(np.sum(WP ** 2, axis=1)), 'b', linewidth=2, label='time')
-plt.plot(t, IW * np.ones(t.shape), 'b--', linewidth=1)
-plt.plot(t, np.sqrt(np.sum(WPf ** 2, axis=1)), 'r', linewidth=2, label='frequency')
-plt.plot(t, IWf * np.ones(t.shape), 'r--', linewidth=1)
+plt.plot(t, np.sqrt(np.sum(WP ** 2, axis=1)), 'C0', linewidth=2, label='time')
+plt.plot(t, IW * np.ones(t.shape), 'C0--', linewidth=1)
+plt.plot(t, np.sqrt(np.sum(WPf ** 2, axis=1)), 'C1', linewidth=2, label='frequency')
+plt.plot(t, IWf * np.ones(t.shape), 'C1--', linewidth=1)
 plt.xlabel('time (s)',fontsize=14)
 plt.ylabel('weighted signal', fontsize=14)
 plt.xticks(fontsize=14)

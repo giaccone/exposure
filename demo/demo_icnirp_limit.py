@@ -35,8 +35,8 @@ plt.tight_layout()
 
 
 fg2 = plt.figure()
-plt.loglog(freq, E98o, 'C0', linewidth=2, label='1998, Occ.')
-plt.loglog(freq, E98p, 'C0--', linewidth=2, label='1998, Pub.')
+# plt.loglog(freq, E98o, 'C0', linewidth=2, label='1998, Occ.')
+# plt.loglog(freq, E98p, 'C0--', linewidth=2, label='1998, Pub.')
 
 plt.loglog(freq, Ecns10o, 'C1', linewidth=2, label='2010, Occ., CNS')
 plt.loglog(freq, Epns10o, 'C1--', linewidth=2, label='2010, Occ., PNS')
